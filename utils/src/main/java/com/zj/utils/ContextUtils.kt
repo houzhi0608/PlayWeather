@@ -13,7 +13,7 @@ import kotlinx.coroutines.Job
 fun Job?.checkCoroutines() {
     if (this?.isActive == true) return
     this?.cancel()
-    XLog.d("Already in the query, first cancel the previous coroutine")
+    XLog.d(msg = "Already in the query, first cancel the previous coroutine")
 }
 
 /**
@@ -33,12 +33,12 @@ fun Context.checkNetConnect(): Boolean {
         }
         networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> {
             // 当前使用移动网络
-            XLog.d("You are using a mobile network")
+            XLog.d(msg = "You are using a mobile network")
             true
         }
         networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> {
             // 当前使用WIFI网络
-            XLog.d("The WIFI network is in use")
+            XLog.d(msg = "The WIFI network is in use")
             true
         }
         else -> {
@@ -52,7 +52,7 @@ fun Context.checkNetConnect(): Boolean {
  * 获取默认语言
  */
 fun Context.getDefaultLocale(): Lang {
-    XLog.d("getDefaultLocale: ${resources.configuration.locales[0].toLanguageTag()}")
+    XLog.d(msg = "getDefaultLocale: ${resources.configuration.locales[0].toLanguageTag()}")
     return when (resources.configuration.locales[0].toLanguageTag()) {
         "zh", "zh-CN" -> Lang.ZH_HANS
         "zh_rHK", "zh_rTW", "zh_HK", "zh_TW", "HK", "TW", "zh-TW", "zh-HK" -> Lang.ZH_HANT

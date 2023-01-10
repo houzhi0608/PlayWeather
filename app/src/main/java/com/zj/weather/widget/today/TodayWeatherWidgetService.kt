@@ -5,13 +5,13 @@ import android.content.Context
 import android.content.Intent
 import android.widget.RemoteViews
 import android.widget.RemoteViewsService
+import com.zj.utils.XLog
+import com.zj.utils.view.BitmapFillet.fillet
+import com.zj.utils.view.BitmapFillet.zoomImg
+import com.zj.utils.weather.IconUtils
 import com.zj.weather.R
 import com.zj.weather.widget.WeatherWidgetUtils.notifyWeatherWidget
 import com.zj.weather.widget.week.WeekWeather
-import com.zj.utils.view.BitmapFillet.fillet
-import com.zj.utils.view.BitmapFillet.zoomImg
-import com.zj.utils.XLog
-import com.zj.utils.weather.IconUtils
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
 
@@ -56,11 +56,11 @@ class TodayWeatherRemoteViewsFactory(private val context: Context, intent: Inten
     }
 
     override fun onDataSetChanged() {
-        XLog.w("onDataSetChanged: ")
+        XLog.w(msg = "onDataSetChanged: ")
     }
 
     override fun onDestroy() {
-        XLog.d("onDestroy: ")
+        XLog.i(msg = "onDestroy: ")
     }
 
     override fun getCount(): Int {
@@ -68,13 +68,13 @@ class TodayWeatherRemoteViewsFactory(private val context: Context, intent: Inten
     }
 
     override fun getViewAt(position: Int): RemoteViews {
-        XLog.w("getViewAt:${widgetItems.size}")
+        XLog.w(msg = "getViewAt:${widgetItems.size}")
         if (widgetItems.size != WEEK_COUNT) {
             return RemoteViews(context.packageName, R.layout.widget_loading)
         }
         return RemoteViews(context.packageName, R.layout.today_widget_item).apply {
             val weather = widgetItems[position]
-            XLog.w("getViewAt: ${weather.text}")
+            XLog.w(msg = "getViewAt: ${weather.text}")
             setTextViewText(R.id.today_tv_one_temp, "${weather.min}-${weather.max}℃")
             setTextViewText(R.id.today_tv_one, weather.text)
             setImageViewBitmap(

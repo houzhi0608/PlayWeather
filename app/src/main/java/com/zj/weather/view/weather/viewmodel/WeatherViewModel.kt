@@ -8,19 +8,15 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.zj.model.WeatherModel
+import com.zj.model.*
 import com.zj.model.room.entity.CityInfo
+import com.zj.model.weather.WeatherDailyBean
+import com.zj.model.weather.WeatherNowBean
 import com.zj.utils.XLog
 import com.zj.utils.checkCoroutines
 import com.zj.utils.checkNetConnect
 import com.zj.utils.view.showToast
 import com.zj.weather.R
-import com.zj.model.PlayError
-import com.zj.model.PlayLoading
-import com.zj.model.PlayState
-import com.zj.model.PlaySuccess
-import com.zj.model.weather.WeatherDailyBean
-import com.zj.model.weather.WeatherNowBean
 import com.zj.weather.widget.today.LOCATION_REFRESH
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
@@ -61,7 +57,7 @@ class WeatherViewModel @Inject constructor(
 
     private fun onWeatherModelChanged(playState: PlayState<WeatherModel>) {
         if (playState == _weatherModel.value) {
-            XLog.d("onWeatherModelChanged no change")
+            XLog.i(msg = "onWeatherModelChanged no change")
             return
         }
         _weatherModel.postValue(playState)
@@ -94,7 +90,7 @@ class WeatherViewModel @Inject constructor(
         if (weatherMap.containsKey(location)) {
             val weather = weatherMap[location]
             if (weather != null && weather.first + FIFTEEN_MINUTES > System.currentTimeMillis()) {
-                XLog.d("Direct return")
+                XLog.i(msg = "Direct return")
                 onWeatherModelChanged(PlaySuccess(weather.second))
                 return
             }
@@ -121,7 +117,7 @@ class WeatherViewModel @Inject constructor(
             withContext(Dispatchers.Main) {
                 onWeatherModelChanged(PlaySuccess(weatherModel))
             }
-            XLog.w("For the weather:$location")
+            XLog.w(msg = "For the weather:$location")
         }
     }
 

@@ -36,7 +36,7 @@ class WeatherListRepository @Inject constructor(private val context: Application
         } else {
             val text = getErrorText(code)
             showToast(context, text)
-            XLog.w("code:$code, text:$text")
+            XLog.w(msg = "code:$code, text:$text")
             PlayError(NullPointerException(text))
         }
     }
@@ -71,7 +71,7 @@ class WeatherListRepository @Inject constructor(private val context: Application
         } else {
             val text = getErrorText(code)
             showToast(context, text)
-            XLog.w("code:$code, text:$text")
+            XLog.w(msg = "code:$code, text:$text")
             PlayError(NullPointerException(text))
         }
     }

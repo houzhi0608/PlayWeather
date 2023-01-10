@@ -33,7 +33,7 @@ class TodayGlanceWidget(private val state: PlayState<WeatherNowBean.NowBaseBean>
             }
             else -> {
                 WarnWeather()
-                XLog.w("Loading")
+                XLog.w(msg = "Loading")
             }
         }
     }

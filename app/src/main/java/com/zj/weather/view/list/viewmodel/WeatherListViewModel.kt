@@ -5,13 +5,13 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.zj.model.city.GeoBean
-import com.zj.utils.XLog
-import com.zj.utils.checkNetConnect
 import com.zj.model.PlayError
 import com.zj.model.PlayLoading
 import com.zj.model.PlayState
+import com.zj.model.city.GeoBean
 import com.zj.model.room.entity.CityInfo
+import com.zj.utils.XLog
+import com.zj.utils.checkNetConnect
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -29,7 +29,7 @@ class WeatherListViewModel @Inject constructor(
 
     private fun onLocationBeanListChanged(hourlyBean: PlayState<List<GeoBean.LocationBean>>) {
         if (hourlyBean == _locationBeanList.value) {
-            XLog.d("onLocationBeanListChanged no change")
+            XLog.i(msg = "onLocationBeanListChanged no change")
             return
         }
         _locationBeanList.postValue(hourlyBean)

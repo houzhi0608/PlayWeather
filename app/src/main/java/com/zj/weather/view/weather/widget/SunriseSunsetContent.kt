@@ -30,7 +30,7 @@ import kotlin.math.pow
 @Composable
 fun SunriseSunsetContent(dailyBean: WeatherDailyBean.DailyBean?) {
     if (dailyBean == null) {
-        XLog.w("dailyBean is null")
+        XLog.w(msg = "dailyBean is null")
         return
     }
     val context = LocalContext.current
@@ -173,7 +173,7 @@ private fun DrawScope.bezierPointPair(sunResult: Double): Pair<Double, Double> {
  */
 fun getBitmapFromVectorDrawable(context: Context?, drawableId: Int): Bitmap? {
     if (context == null) {
-        XLog.w("context is null")
+        XLog.w(msg = "context is null")
         return null
     }
     val drawable = ContextCompat.getDrawable(context, drawableId) ?: return null

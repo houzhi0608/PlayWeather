@@ -42,7 +42,7 @@ class WeatherRepository @Inject constructor(private val context: Application) {
         } else {
             val text = getErrorText(code)
             showToast(context, text)
-            XLog.w("code:$code, text:$text")
+            XLog.w(msg = "code:$code, text:$text")
             null
         }
     }
@@ -64,7 +64,7 @@ class WeatherRepository @Inject constructor(private val context: Application) {
         } else {
             val text = getErrorText(code)
             showToast(context, text)
-            XLog.w("code:$code, text:$text")
+            XLog.w(msg = "code:$code, text:$text")
             arrayListOf()
         }
     }
@@ -88,7 +88,7 @@ class WeatherRepository @Inject constructor(private val context: Application) {
         } else {
             val text = getErrorText(code)
             showToast(context, text)
-            XLog.w("code:$code, text:$text")
+            XLog.w(msg = "code:$code, text:$text")
             null
         }
     }
@@ -109,7 +109,7 @@ class WeatherRepository @Inject constructor(private val context: Application) {
         } else {
             val text = getErrorText(code)
             showToast(context, text)
-            XLog.w("code:$code, text:$text")
+            XLog.w(msg = "code:$code, text:$text")
             null
         }
     }
@@ -128,7 +128,7 @@ class WeatherRepository @Inject constructor(private val context: Application) {
         } else {
             val text = getErrorText(code)
             showToast(context, text)
-            XLog.w("code:$code, text:$text")
+            XLog.w(msg = "code:$code, text:$text")
             arrayListOf()
         }
     }
@@ -147,20 +147,20 @@ class WeatherRepository @Inject constructor(private val context: Application) {
         val address = result[0]
         val isLocationList = cityInfoDao.getIsLocationList()
         val cityInfo = buildCityInfo(location, address)
-        XLog.w("updateCityInfo: address:${address}")
+        XLog.w(msg = "updateCityInfo: address:${address}")
         if (isLocationList.isNotEmpty()) {
             cityInfo.uid = isLocationList[0].uid
             if (cityInfo == isLocationList[0]) {
-                XLog.w("updateCityInfo: The need to modify:${cityInfo.uid}  ")
+                XLog.w(msg = "updateCityInfo: The need to modify:${cityInfo.uid}  ")
             } else {
-                XLog.w("updateCityInfo: Need to modify:${cityInfo.uid}")
+                XLog.w(msg = "updateCityInfo: Need to modify:${cityInfo.uid}")
                 updateCityIndex(cityInfo)
                 cityInfoDao.update(cityInfo)
             }
         } else {
             updateCityIndex(cityInfo)
             cityInfoDao.insert(cityInfo)
-            XLog.w("updateCityInfo: Need to add")
+            XLog.w(msg = "updateCityInfo: Need to add")
         }
     }
 

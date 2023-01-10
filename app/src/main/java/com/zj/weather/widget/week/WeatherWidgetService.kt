@@ -8,13 +8,13 @@ import android.view.View
 import android.widget.RemoteViews
 import android.widget.RemoteViewsService
 import com.google.gson.Gson
-import com.zj.weather.R
-import com.zj.weather.widget.WeatherWidgetUtils.notifyWeatherWidget
 import com.zj.model.room.entity.CityInfo
+import com.zj.utils.XLog
 import com.zj.utils.view.BitmapFillet.fillet
 import com.zj.utils.view.BitmapFillet.zoomImg
-import com.zj.utils.XLog
 import com.zj.utils.weather.IconUtils
+import com.zj.weather.R
+import com.zj.weather.widget.WeatherWidgetUtils.notifyWeatherWidget
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
 
@@ -66,11 +66,11 @@ class WeatherRemoteViewsFactory(private val context: Context, intent: Intent) :
     }
 
     override fun onDataSetChanged() {
-        XLog.w("onDataSetChanged: ")
+        XLog.w(msg = "onDataSetChanged: ")
     }
 
     override fun onDestroy() {
-        XLog.d("onDestroy: ")
+        XLog.i(msg = "onDestroy: ")
     }
 
     override fun getCount(): Int {
@@ -78,14 +78,14 @@ class WeatherRemoteViewsFactory(private val context: Context, intent: Intent) :
     }
 
     override fun getViewAt(position: Int): RemoteViews {
-        XLog.w("getViewAt:${widgetItems.size}")
+        XLog.w(msg = "getViewAt:${widgetItems.size}")
         if (widgetItems.size != WEEK_COUNT) {
             return RemoteViews(context.packageName, R.layout.widget_loading)
         }
         return RemoteViews(context.packageName, R.layout.widget_item).apply {
             val weather = widgetItems[position]
-            XLog.w("getViewAt: ${weather.text}")
-            XLog.w("getViewAt: ${weather.text} cityInfo:$cityInfo")
+            XLog.w(msg = "getViewAt: ${weather.text}")
+            XLog.w(msg = "getViewAt: ${weather.text} cityInfo:$cityInfo")
             setTextViewText(R.id.widget_tv_temp, "${weather.min}-${weather.max}℃")
             setTextViewText(
                 R.id.widget_tv_city,
@@ -105,7 +105,7 @@ class WeatherRemoteViewsFactory(private val context: Context, intent: Intent) :
             val fillInIntent = Intent().apply {
                 putExtra(EXTRA_ITEM, weather.time)
             }
-            XLog.w("getViewAt: fillInIntent:${position}")
+            XLog.w(msg = "getViewAt: fillInIntent:${position}")
             setOnClickFillInIntent(R.id.widget_ll_item, fillInIntent)
         }
     }

@@ -41,12 +41,12 @@ class PlayWeatherNetwork(private val context: Context) {
     private val cityLookupService = ServiceCreator.createCity(CityLookupService::class.java)
 
     suspend fun getCityLookup(location: String): GeoBean {
-        XLog.w(context.packageName)
+        XLog.w(msg = context.packageName)
         return cityLookupService.getCityLookup(location = location, lang = language.code)
     }
 
     suspend fun getCityTop(): TopGeoBean {
-        XLog.w(context.packageName)
+        XLog.w(msg = context.packageName)
         return cityLookupService.getCityTop(lang = language.code)
     }
 

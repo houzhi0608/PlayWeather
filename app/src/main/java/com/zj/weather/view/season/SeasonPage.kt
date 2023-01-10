@@ -23,7 +23,7 @@ import com.zj.weather.R
 @Composable
 fun SeasonPage() {
     val season = getSeason()
-    XLog.i("season:$season")
+    XLog.i(msg = "season:$season")
     when (season) {
         Season.SPRING -> {
             Season(R.mipmap.back_100d, season.name)

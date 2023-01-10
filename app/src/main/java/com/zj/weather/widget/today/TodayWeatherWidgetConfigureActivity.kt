@@ -92,7 +92,7 @@ fun refreshLocationWeather(
     if (!context.checkNetConnect()) {
         showToast(context, R.string.bad_network_view_tip)
     }
-    XLog.w("refreshLocationWeather:${cityInfo}")
+    XLog.w(msg = "refreshLocationWeather:${cityInfo}")
     saveCityInfoPref(context, appWidgetId, cityInfo, prefsName)
 
     // It is the responsibility of the configuration activity to update the app widget

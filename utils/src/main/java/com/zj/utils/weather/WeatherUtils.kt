@@ -42,7 +42,7 @@ fun getTodayBean(daily: List<WeatherDailyBean.DailyBean>): WeatherDailyBean.Dail
  * @return 对应的描述
  */
 fun getUvIndexDesc(context: Context, uv: String?): String {
-    XLog.d("getUvIndexDesc: $uv")
+    XLog.i(msg = "getUvIndexDesc: $uv")
     if (uv == null || uv.isEmpty()) {
         return context.getString(R.string.uv_index1)
     }
