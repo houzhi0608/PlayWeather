@@ -27,7 +27,7 @@ object XLog {
     init {
         Log.i(APP_TAG, "Build.TYPE = " + Build.TYPE)
         when (Build.TYPE) {
-            VERSION_USER -> type = TYPE_W
+            VERSION_USER -> type = /*TYPE_W*/TYPE_ALL
             VERSION_ENG, VERSION_USER_DEBUG -> type = TYPE_ALL
             else -> Log.e(APP_TAG, "unknown build type, type = " + Build.TYPE)
         }

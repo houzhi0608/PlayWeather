@@ -28,4 +28,11 @@
         <!--「启动画面」底部显示的品牌图标-->
         <item name="android:windowSplashScreenBrandingImage">@mipmap/ic_launcher_foreground</item>
     </style>
+    <!--
+    Having themes.xml for night-v31 because of the priority order of the resource qualifiers.
+    -->
+    <style name="Theme.PlayWeather.AppWidgetContainerParent" parent="@android:style/Theme.DeviceDefault.DayNight">
+        <item name="appWidgetRadius">@android:dimen/system_app_widget_background_radius</item>
+        <item name="appWidgetInnerRadius">@android:dimen/system_app_widget_inner_radius</item>
+    </style>
 </resources>

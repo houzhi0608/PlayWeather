@@ -86,5 +86,9 @@
     <string name="city_rank">Rank:</string>
     <string name="widget_preview_city">Beijing</string>
     <string name="widget_preview_weather">Sunny</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="configure">Configure</string>
+    <string name="add_widget">Add widget</string>
+    <string name="app_widget_description">This is an app widget description</string>
 
 </resources>
